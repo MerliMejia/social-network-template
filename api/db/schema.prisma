@@ -15,5 +15,5 @@ model User {
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  name                String?
+  name                String
 }

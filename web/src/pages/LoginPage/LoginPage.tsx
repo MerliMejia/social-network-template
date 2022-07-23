@@ -1,5 +1,7 @@
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { useEffect } from 'react'
 import { useRef } from 'react'
+
+import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
   Label,
@@ -8,10 +10,9 @@ import {
   Submit,
   FieldError,
 } from '@redwoodjs/forms'
-import { useAuth } from '@redwoodjs/auth'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
-import { useEffect } from 'react'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
@@ -59,7 +60,7 @@ const LoginPage = () => {
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    Username
+                    Email
                   </Label>
                   <TextField
                     name="username"
@@ -97,7 +98,10 @@ const LoginPage = () => {
                   />
 
                   <div className="rw-forgot-link">
-                    <Link to={routes.forgotPassword()} className="rw-forgot-link">
+                    <Link
+                      to={routes.forgotPassword()}
+                      className="rw-forgot-link"
+                    >
                       Forgot Password?
                     </Link>
                   </div>

@@ -1,5 +1,7 @@
-import { Link, navigate, routes } from '@redwoodjs/router'
 import { useRef } from 'react'
+import { useEffect } from 'react'
+
+import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
   Label,
@@ -8,10 +10,9 @@ import {
   FieldError,
   Submit,
 } from '@redwoodjs/forms'
-import { useAuth } from '@redwoodjs/auth'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
-import { useEffect } from 'react'
 
 const SignupPage = () => {
   const { isAuthenticated, signUp } = useAuth()
@@ -61,7 +62,7 @@ const SignupPage = () => {
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    Username
+                    Email
                   </Label>
                   <TextField
                     name="username"
@@ -76,6 +77,26 @@ const SignupPage = () => {
                     }}
                   />
                   <FieldError name="username" className="rw-field-error" />
+
+                  <Label
+                    name="name"
+                    className="rw-label"
+                    errorClassName="rw-label rw-label-error"
+                  >
+                    Name
+                  </Label>
+                  <TextField
+                    name="name"
+                    className="rw-input"
+                    errorClassName="rw-input rw-input-error"
+                    validation={{
+                      required: {
+                        value: true,
+                        message: 'Name is required',
+                      },
+                    }}
+                  />
+                  <FieldError name="name" className="rw-field-error" />
 
                   <Label
                     name="password"
@@ -99,7 +120,9 @@ const SignupPage = () => {
                   <FieldError name="password" className="rw-field-error" />
 
                   <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Sign Up</Submit>
+                    <Submit className="rw-button rw-button-blue">
+                      Sign Up
+                    </Submit>
                   </div>
                 </Form>
               </div>
