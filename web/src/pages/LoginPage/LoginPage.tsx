@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { useRef } from 'react'
 
+import { Button } from '@chakra-ui/react'
+
 import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
   Label,
   TextField,
   PasswordField,
-  Submit,
   FieldError,
 } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
@@ -108,9 +109,9 @@ const LoginPage = () => {
 
                   <FieldError name="password" className="rw-field-error" />
 
-                  <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Login</Submit>
-                  </div>
+                  <Button colorScheme="purple" type="submit">
+                    Login
+                  </Button>
                 </Form>
               </div>
             </div>
