@@ -1,5 +1,9 @@
+import { ChakraProvider } from '@chakra-ui/react'
+
 import LoginPage from 'src/pages/LoginPage/LoginPage'
 import SignupPage from 'src/pages/SignupPage/SignupPage'
+import { theme } from 'src/utils/constants'
+import { DECORATORS } from 'src/utils/decorators'
 
 import AuthLayout from './AuthLayout'
 
@@ -9,23 +13,25 @@ import '../../scaffold.css'
 export default {
   title: 'Layouts/AuthLayout',
   component: AuthLayout,
-  decorators: [
-    (Story) => (
-      <div style={{ margin: '3em', backgroundColor: '#B43BC4' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [...DECORATORS],
 }
 
+const Provider = ({ children }) => (
+  <ChakraProvider theme={theme}>{children}</ChakraProvider>
+)
+
 export const Login = () => (
-  <AuthLayout>
-    <LoginPage />
-  </AuthLayout>
+  <Provider>
+    <AuthLayout>
+      <LoginPage />
+    </AuthLayout>
+  </Provider>
 )
 
 export const SignUp = () => (
-  <AuthLayout>
-    <SignupPage />
-  </AuthLayout>
+  <Provider>
+    <AuthLayout>
+      <SignupPage />
+    </AuthLayout>
+  </Provider>
 )
