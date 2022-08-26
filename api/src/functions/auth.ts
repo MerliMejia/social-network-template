@@ -18,6 +18,7 @@ export const handler = async (event, context) => {
     // address in a toast message so the user will know it worked and where
     // to look for the email.
     handler: (user) => {
+      console.log(user.resetToken)
       return user
     },
 

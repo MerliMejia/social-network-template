@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
+
+import { Button, Heading } from '@chakra-ui/react'
+
 import { useAuth } from '@redwoodjs/auth'
+import { Form, Label, PasswordField, FieldError } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
-import {
-  Form,
-  Label,
-  PasswordField,
-  Submit,
-  FieldError,
-} from '@redwoodjs/forms'
+
+import './ResetPasswordPage.scss'
 
 const ResetPasswordPage = ({ resetToken }) => {
-  const { isAuthenticated, reauthenticate, validateResetToken, resetPassword } = useAuth()
+  const { isAuthenticated, reauthenticate, validateResetToken, resetPassword } =
+    useAuth()
   const [enabled, setEnabled] = useState(true)
 
   useEffect(() => {
@@ -58,59 +58,48 @@ const ResetPasswordPage = ({ resetToken }) => {
     <>
       <MetaTags title="Reset Password" />
 
-      <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">
-                Reset Password
-              </h2>
-            </header>
+      <Heading as={'h2'} size="md">
+        Reset Password
+      </Heading>
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <div className="text-left">
-                    <Label
-                      name="password"
-                      className="rw-label"
-                      errorClassName="rw-label rw-label-error"
-                    >
-                      New Password
-                    </Label>
-                    <PasswordField
-                      name="password"
-                      autoComplete="new-password"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
-                      disabled={!enabled}
-                      ref={passwordRef}
-                      validation={{
-                        required: {
-                          value: true,
-                          message: 'Password is required',
-                        },
-                      }}
-                    />
+      <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
 
-                    <FieldError name="password" className="rw-field-error" />
-                  </div>
+      <Form onSubmit={onSubmit}>
+        <div className="text-left">
+          <Label
+            name="password"
+            className="rw-label"
+            errorClassName="rw-label rw-label-error"
+          >
+            New Password
+          </Label>
+          <PasswordField
+            name="password"
+            autoComplete="new-password"
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            disabled={!enabled}
+            ref={passwordRef}
+            validation={{
+              required: {
+                value: true,
+                message: 'Password is required',
+              },
+            }}
+          />
 
-                  <div className="rw-button-group">
-                    <Submit
-                      className="rw-button rw-button-blue"
-                      disabled={!enabled}
-                    >
-                      Submit
-                    </Submit>
-                  </div>
-                </Form>
-              </div>
-            </div>
-          </div>
+          <FieldError name="password" className="rw-field-error" />
         </div>
-      </main>
+
+        <Button
+          className="reset-password-btn"
+          colorScheme="purple"
+          type="submit"
+          disabled={!enabled}
+        >
+          Submit
+        </Button>
+      </Form>
     </>
   )
 }
