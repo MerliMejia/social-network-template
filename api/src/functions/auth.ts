@@ -2,6 +2,7 @@
 import { DbAuthHandler } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
+import { sendEmail } from 'src/lib/email'
 
 export const handler = async (event, context) => {
   const forgotPasswordOptions = {
@@ -17,8 +18,23 @@ export const handler = async (event, context) => {
     // You could use this return value to, for example, show the email
     // address in a toast message so the user will know it worked and where
     // to look for the email.
-    handler: (user) => {
-      console.log(user.resetToken)
+    handler: async (user) => {
+      let url = `http://localhost:8910/reset-password?resetToken=${user.resetToken}`
+      if (process.env.NODE_ENV === 'production') {
+        url = `${process.env.HOST_URL}/reset-password?resetToken=${user.resetToken}`
+      }
+      const isEmailSent = await sendEmail(
+        user.email,
+        'FORGOT PASSWORD',
+        `Go to this link to reset password: ${url}`
+      )
+      console.log('isEmailSent', isEmailSent)
+      if (!isEmailSent)
+        return {
+          errors: {
+            emailNotSent: 'There was an error while sending the email.',
+          },
+        }
       return user
     },
 
