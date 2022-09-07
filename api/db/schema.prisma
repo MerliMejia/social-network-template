@@ -16,4 +16,15 @@ model User {
   resetToken          String?
   resetTokenExpiresAt DateTime?
   name                String
+  posts               Post[]
+}
+
+model Post {
+  id       Int      @id @default(autoincrement())
+  title    String
+  content  String
+  tags     String[]
+  likes    Int
+  author   User     @relation(fields: [authorId], references: [id])
+  authorId Int
 }
