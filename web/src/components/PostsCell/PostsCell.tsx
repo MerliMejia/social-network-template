@@ -3,9 +3,13 @@ import type { PostsQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 export const QUERY = gql`
-  query PostsQuery {
-    posts {
+  query PostsQuery($authorId: Int!) {
+    posts(authorId: $authorId) {
       id
+      title
+      content
+      tags
+      likes
     }
   }
 `

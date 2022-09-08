@@ -8,12 +8,6 @@ import type { StandardScenario } from './posts.scenarios'
 // https://redwoodjs.com/docs/testing#jest-expect-type-considerations
 
 describe('posts', () => {
-  scenario('returns all posts', async (scenario: StandardScenario) => {
-    const result = await posts()
-
-    expect(result.length).toEqual(Object.keys(scenario.post).length)
-  })
-
   scenario('returns a single post', async (scenario: StandardScenario) => {
     const result = await post({ id: scenario.post.one.id })
 
@@ -25,27 +19,33 @@ describe('posts', () => {
       input: {
         title: 'String',
         content: 'String',
-        tags: 'String',
+        tags: ['String'],
         likes: 4674280,
-        authorId: scenario.post.two.authorId,
+        authorId: scenario.post.one.authorId,
       },
     })
 
     expect(result.title).toEqual('String')
     expect(result.content).toEqual('String')
-    expect(result.tags).toEqual('String')
+    expect(result.tags).toEqual(['String'])
     expect(result.likes).toEqual(4674280)
-    expect(result.authorId).toEqual(scenario.post.two.authorId)
+    expect(result.authorId).toEqual(scenario.post.one.authorId)
   })
 
   scenario('updates a post', async (scenario: StandardScenario) => {
     const original = await post({ id: scenario.post.one.id })
     const result = await updatePost({
       id: original.id,
-      input: { title: 'String2' },
+      input: { title: 'String2', tags: [] },
     })
 
     expect(result.title).toEqual('String2')
+  })
+
+  scenario('returns all posts', async (scenario: StandardScenario) => {
+    const result = await posts({ authorId: scenario.post.one.authorId })
+
+    expect(result.length).toEqual(1)
   })
 
   scenario('deletes a post', async (scenario: StandardScenario) => {

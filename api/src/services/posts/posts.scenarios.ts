@@ -6,7 +6,7 @@ export const standard = defineScenario<Prisma.PostCreateArgs>({
       data: {
         title: 'String',
         content: 'String',
-        tags: 'String',
+        tags: ['String'],
         likes: 9004701,
         author: {
           create: {
@@ -22,7 +22,7 @@ export const standard = defineScenario<Prisma.PostCreateArgs>({
       data: {
         title: 'String',
         content: 'String',
-        tags: 'String',
+        tags: ['String'],
         likes: 9424141,
         author: {
           create: {
