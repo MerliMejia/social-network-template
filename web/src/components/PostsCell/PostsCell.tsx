@@ -3,13 +3,15 @@ import type { PostsQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 export const QUERY = gql`
-  query PostsQuery($authorId: Int!) {
-    posts(authorId: $authorId) {
-      id
-      title
-      content
-      tags
-      likes
+  query PostsQuery($page: Int, $authorId: Int!) {
+    postPage(page: $page, authorId: $authorId) {
+      posts {
+        id
+        title
+        content
+        tags
+        likes
+      }
     }
   }
 `
@@ -22,10 +24,10 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
 )
 
-export const Success = ({ posts }: CellSuccessProps<PostsQuery>) => {
+export const Success = ({ postPage }: CellSuccessProps<PostsQuery>) => {
   return (
     <ul>
-      {posts.map((item) => {
+      {postPage.posts.map((item) => {
         return <li key={item.id}>{JSON.stringify(item)}</li>
       })}
     </ul>

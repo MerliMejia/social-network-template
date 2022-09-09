@@ -9,7 +9,13 @@ export const schema = gql`
     authorId: Int!
   }
 
+  type PostPage {
+    posts: [Post!]!
+    count: Int!
+  }
+
   type Query {
+    postPage(page: Int, authorId: Int!): PostPage @skipAuth
     posts(authorId: Int!): [Post!]! @skipAuth
     post(id: Int!): Post @skipAuth
   }

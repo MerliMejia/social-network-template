@@ -6,6 +6,26 @@ import type {
 
 import { db } from 'src/lib/db'
 
+const POSTS_PER_PAGE = 5
+
+export const postPage = ({ page = 1, authorId }) => {
+  // eslint-disable-next-line no-debugger
+  if (page === 0) {
+    page = 1
+  }
+  const offset = (page - 1) * POSTS_PER_PAGE
+
+  return {
+    posts: db.post.findMany({
+      take: POSTS_PER_PAGE,
+      skip: offset,
+      orderBy: { id: 'asc' },
+      where: { authorId },
+    }),
+    count: db.post.count(),
+  }
+}
+
 export const posts: QueryResolvers['posts'] = ({ authorId }) => {
   return db.post.findMany({ where: { authorId } })
 }
