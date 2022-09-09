@@ -7,7 +7,7 @@ import { DECORATORS } from 'src/utils/decorators'
 
 import AuthLayout from './AuthLayout'
 
-import '../../index.css'
+import '../../index.scss'
 import '../../scaffold.css'
 
 export default {
