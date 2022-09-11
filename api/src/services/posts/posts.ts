@@ -6,7 +6,7 @@ import type {
 
 import { db } from 'src/lib/db'
 
-const POSTS_PER_PAGE = 5
+const POSTS_PER_PAGE = 3
 
 export const postPage = ({ page = 1, authorId }) => {
   // eslint-disable-next-line no-debugger
@@ -22,7 +22,11 @@ export const postPage = ({ page = 1, authorId }) => {
       orderBy: { id: 'asc' },
       where: { authorId },
     }),
-    count: db.post.count(),
+    count: new Promise((res) => {
+      db.post.count().then((count) => {
+        res(Math.round(count / POSTS_PER_PAGE))
+      })
+    }),
   }
 }
 

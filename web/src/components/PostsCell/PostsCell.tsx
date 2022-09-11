@@ -1,7 +1,11 @@
+import { useContext } from 'react'
+
 import { Container } from '@chakra-ui/react'
 import type { PostsQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+
+import { ProfilePageContext } from 'src/utils/contexts/ProfilePageContext'
 
 import PostCard from '../PostCard/PostCard'
 
@@ -20,6 +24,7 @@ export const QUERY = gql`
           email
         }
       }
+      count
     }
   }
 `
@@ -33,6 +38,8 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ postPage }: CellSuccessProps<PostsQuery>) => {
+  const { setPageCount } = useContext(ProfilePageContext)
+  setPageCount(postPage.count)
   return (
     <Container>
       {postPage.posts.map((post, index) => (
