@@ -1,0 +1,46 @@
+.pagination {
+  width: 50vw;
+  margin: auto;
+  border-style: solid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+
+  &__btn {
+    width: 90px;
+    height: fit-content;
+    background-color: #b43bc4;
+    padding: 10px;
+    border-radius: 7px;
+
+    a {
+      color: white;
+    }
+  }
+
+  a {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    font-family: var(--chakra-fonts-body);
+  }
+
+  &__active {
+    width: 35px;
+    height: 35px;
+    background-color: #b43bc4;
+    padding: 5px;
+    border-radius: 35px;
+    transition: all 0.2s;
+    a {
+      color: white;
+    }
+  }
+}
+
+li {
+  list-style: none;
+}

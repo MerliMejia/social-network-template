@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 
 import ReactPaginate from 'react-paginate'
 
@@ -8,6 +8,7 @@ import { MetaTags } from '@redwoodjs/web'
 import { ProfilePageContext } from 'src/utils/contexts/ProfilePageContext'
 
 import PostsCell from '../../components/PostsCell'
+import './ProfilePage.scss'
 
 const ProfilePage = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -30,12 +31,16 @@ const ProfilePage = () => {
       <PostsCell page={currentPage} authorId={currentUser.id} />
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="Next"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="Previous"
         renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        nextClassName="pagination__btn"
+        previousClassName="pagination__btn"
+        activeClassName="pagination__active"
       />
     </ProfilePageContext.Provider>
   )
