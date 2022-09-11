@@ -1,0 +1,10 @@
+.PostCard {
+  max-width: 800px;
+  margin-bottom: 50px;
+  padding: 20px;
+  box-shadow: 3px 3px 6px 0px #88888847;
+
+  &__email{
+    margin-bottom: 10px;
+  }
+}

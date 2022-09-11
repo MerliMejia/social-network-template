@@ -1,6 +1,9 @@
+import { Container } from '@chakra-ui/react'
 import type { PostsQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+
+import PostCard from '../PostCard/PostCard'
 
 export const QUERY = gql`
   query PostsQuery($page: Int, $authorId: Int!) {
@@ -11,6 +14,11 @@ export const QUERY = gql`
         content
         tags
         likes
+        author {
+          id
+          name
+          email
+        }
       }
     }
   }
@@ -26,10 +34,10 @@ export const Failure = ({ error }: CellFailureProps) => (
 
 export const Success = ({ postPage }: CellSuccessProps<PostsQuery>) => {
   return (
-    <ul>
-      {postPage.posts.map((item) => {
-        return <li key={item.id}>{JSON.stringify(item)}</li>
-      })}
-    </ul>
+    <Container>
+      {postPage.posts.map((post, index) => (
+        <PostCard key={index} post={post} />
+      ))}
+    </Container>
   )
 }
