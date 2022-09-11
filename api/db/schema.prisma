@@ -9,14 +9,32 @@ generator client {
 }
 
 model User {
-  id                  Int       @id @default(autoincrement())
-  email               String    @unique
+  id                  Int         @id @default(autoincrement())
+  email               String      @unique
   hashedPassword      String
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
   name                String
   posts               Post[]
+  profileImg          ProfileImg? @relation(fields: [profileImgId], references: [id])
+  profileImgId        Int?
+  headerImg           HeaderImg?  @relation(fields: [headerImgId], references: [id])
+  headerImgId         Int?
+}
+
+model ProfileImg {
+  id     Int    @id @default(autoincrement())
+  file   File   @relation(fields: [fileId], references: [id])
+  User   User[]
+  fileId Int
+}
+
+model HeaderImg {
+  id     Int    @id @default(autoincrement())
+  file   File   @relation(fields: [fileId], references: [id])
+  User   User[]
+  fileId Int
 }
 
 model Post {
@@ -27,4 +45,12 @@ model Post {
   likes    Int
   author   User     @relation(fields: [authorId], references: [id])
   authorId Int
+}
+
+model File {
+  id         Int          @id @default(autoincrement())
+  path       String
+  url        String
+  ProfileImg ProfileImg[]
+  HeaderImg  HeaderImg[]
 }

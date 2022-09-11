@@ -15,9 +15,9 @@ export const schema = gql`
   }
 
   type Query {
-    postPage(page: Int, authorId: Int!): PostPage @skipAuth
-    posts(authorId: Int!): [Post!]! @skipAuth
-    post(id: Int!): Post @skipAuth
+    postPage(page: Int, authorId: Int!): PostPage @requireAuth
+    posts(authorId: Int!): [Post!]! @requireAuth
+    post(id: Int!): Post @requireAuth
   }
 
   input CreatePostInput {
