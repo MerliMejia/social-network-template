@@ -26,8 +26,8 @@ export const getCurrentUser = async (session) => {
       id: true,
       email: true,
       name: true,
-      profileImg: true,
-      headerImg: true,
+      profileImg: { include: { file: true } },
+      headerImg: { include: { file: true } },
     },
   })
 }
