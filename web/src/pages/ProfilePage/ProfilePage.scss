@@ -45,6 +45,22 @@ li {
   list-style: none;
 }
 
+.header-container{
+  width: 100vw;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background-color: #b43bc4;
+
+  &__img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .pagination {
     width: 85vw;

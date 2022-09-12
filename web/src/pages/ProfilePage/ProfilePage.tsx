@@ -8,7 +8,10 @@ import { MetaTags } from '@redwoodjs/web'
 import { ProfilePageContext } from 'src/utils/contexts/ProfilePageContext'
 
 import PostsCell from '../../components/PostsCell'
+
 import './ProfilePage.scss'
+// eslint-disable-next-line import/order
+import { Box, Image } from '@chakra-ui/react'
 
 const ProfilePage = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -28,6 +31,12 @@ const ProfilePage = () => {
       }}
     >
       <MetaTags title="Profile" description="Profile page" />
+      <Box className="header-container">
+        <Image
+          className="header-container__img"
+          src={currentUser.headerImg.file.url}
+        />
+      </Box>
       <PostsCell page={currentPage} authorId={currentUser.id} />
       <ReactPaginate
         breakLabel="..."
