@@ -6,7 +6,7 @@ import type {
 
 import { db } from 'src/lib/db'
 
-const POSTS_PER_PAGE = 3
+const POSTS_PER_PAGE = 6
 
 export const postPage = ({ page = 1, authorId }) => {
   // eslint-disable-next-line no-debugger
