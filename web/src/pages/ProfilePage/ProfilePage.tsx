@@ -8,7 +8,16 @@ import { MetaTags, useQuery } from '@redwoodjs/web'
 
 import './ProfilePage.scss'
 // eslint-disable-next-line import/order
-import { Box, Center, Container, Image, Spinner, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Container,
+  Image,
+  Skeleton,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 import PostCard from 'src/components/PostCard/PostCard'
 import { QUERY as POST_QUERY } from 'src/components/PostsCell/PostsCell'
 
@@ -52,6 +61,27 @@ const ProfilePage = () => {
       <MetaTags title="Profile" description="Profile page" />
       <Box className="header-container">
         <Image
+          fallback={
+            <Center className="header-container__fallback" padding={'20px'}>
+              <Stack width={'90%'}>
+                <Skeleton
+                  startColor={'purple.200'}
+                  endColor={'purple.400'}
+                  height="20px"
+                />
+                <Skeleton
+                  startColor={'purple.200'}
+                  endColor={'purple.400'}
+                  height="20px"
+                />
+                <Skeleton
+                  startColor={'purple.200'}
+                  endColor={'purple.400'}
+                  height="20px"
+                />
+              </Stack>
+            </Center>
+          }
           className="header-container__img"
           src={currentUser.headerImg.file.url}
         />

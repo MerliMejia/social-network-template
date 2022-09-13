@@ -52,6 +52,10 @@ li {
   position: relative;
   background-color: #b43bc4;
 
+  &__fallback{
+    height: 200px;
+  }
+
   &__img{
     width: 100%;
     position: absolute;
