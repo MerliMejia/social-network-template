@@ -27,7 +27,9 @@ const PostCard = ({ post }: PostCardProps) => {
   return (
     <Box className="PostCard" borderWidth={1}>
       <Flex>
-        <Heading>{post.author.name}</Heading>
+        <Heading size={'md'} as={'h2'}>
+          {post.author.name}
+        </Heading>
         <Spacer />
         <Menu>
           <MenuButton as={'button'}>
@@ -38,14 +40,20 @@ const PostCard = ({ post }: PostCardProps) => {
           </MenuList>
         </Menu>
       </Flex>
-      <Text className="PostCard__email" fontSize={'md'} color={'lavender.300'}>
+      <Text className="PostCard__email" fontSize={'sm'} color={'lavender.300'}>
         {post.author.email}
       </Text>
-      <Text fontSize={'large'} color={'lavender.500'}>
+      <Text
+        className="PostCard__content"
+        fontSize={'sm'}
+        color={'lavender.500'}
+      >
         {post.content.substring(0, POST_CARD_CONTENT_MAX_LENGHT)}...
       </Text>
 
-      <CustomLink to="#">View More</CustomLink>
+      <CustomLink className="PostCard__link" to="#">
+        View More
+      </CustomLink>
     </Box>
   )
 }

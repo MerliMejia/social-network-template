@@ -1,10 +1,23 @@
+@import "../../utils/constants.scss";
+
 .PostCard {
-  max-width: 800px;
+  max-width: 600px;
   margin-bottom: 10px;
   padding: 20px;
-  box-shadow: 3px 3px 6px 0px #88888847;
+  box-shadow: $normal-shadow;
+  background-color: white;
 
   &__email{
+    margin-bottom: 10px;
+    margin-top: -10px;
+  }
+
+  &__link{
+    margin-top: 10px !important;
+    font-size: 15px;
+  }
+
+  &__content{
     margin-bottom: 10px;
   }
 }

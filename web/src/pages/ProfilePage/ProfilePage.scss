@@ -1,48 +1,11 @@
-.pagination {
-  max-width: 570px;
-  margin: auto;
-  border-style: solid;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
-
-  &__btn {
-    width: 90px;
-    height: fit-content;
-    background-color: #b43bc4;
-    padding: 10px;
-    border-radius: 7px;
-
-    a {
-      color: white;
-    }
-  }
-
-  a {
-    display: block;
-    width: fit-content;
-    margin: auto;
-    font-family: var(--chakra-fonts-body);
-  }
-
-  &__active {
-    width: 35px;
-    height: 35px;
-    background-color: #b43bc4;
-    padding: 5px;
-    border-radius: 35px;
-    transition: all 0.2s;
-    a {
-      color: white;
-    }
-  }
-}
+@import "../../utils/constants.scss";
 
 li {
   list-style: none;
+}
+
+body{
+  background-color: #dbd8df85!important;
 }
 
 .header-container{
@@ -66,10 +29,33 @@ li {
 }
 
 .body-container{
-  height: 70vh;
+  height: 80vh;
+  margin: 0;
+  position: relative;
 
   .infinite-scroll-component__outerdiv{
-    max-height: 70vh;
+    max-height: 80vh;
+  }
+  &__profile{
+    position: absolute !important;
+    top: -10px;
+  }
+  &__left{
+    position: relative;
+    background-color: white;
+    padding: 50px;
+    box-shadow: $normal-shadow;
+    &__avatar{
+      position: relative;
+      top: -110px;
+      border-style: solid;
+      border-color: white;
+      border-width: 5px;
+    }
+  }
+  &__center__name{
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
 }
 
