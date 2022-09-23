@@ -16,6 +16,7 @@ model User {
   resetToken          String?
   resetTokenExpiresAt DateTime?
   name                String
+  headline            String?
   posts               Post[]
   profileImg          ProfileImg? @relation(fields: [profileImgId], references: [id])
   profileImgId        Int?

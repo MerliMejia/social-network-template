@@ -55,6 +55,8 @@ body{
   }
   &__center__name{
     margin-top: 40px;
+  }
+  &__center__headline{
     margin-bottom: 20px;
   }
 }
@@ -66,5 +68,10 @@ body{
 @media only screen and (max-width: 768px) {
   .pagination {
     width: 85vw;
+  }
+  .body-container{
+    &__left{
+      width: 100%;
+    }
   }
 }

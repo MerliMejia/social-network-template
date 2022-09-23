@@ -28,6 +28,7 @@ export const getCurrentUser = async (session) => {
       name: true,
       profileImg: { include: { file: true } },
       headerImg: { include: { file: true } },
+      headline: true,
     },
   })
 }

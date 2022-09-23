@@ -12,7 +12,6 @@ import {
   Avatar,
   Box,
   Center,
-  Container,
   Flex,
   Heading,
   Image,
@@ -113,7 +112,7 @@ const ProfilePage = () => {
       </Box>
       <Box className="body-container">
         <Flex
-          wrap={'nowrap'}
+          wrap={'wrap'}
           alignContent={'center'}
           justifyContent={'space-evenly'}
         >
@@ -121,13 +120,23 @@ const ProfilePage = () => {
             className="body-container__left"
             style={{ borderStyle: 'solid', borderColor: 'red' }}
           >
-            <Avatar className="body-container__left__avatar" size={'2xl'} />
+            <Avatar
+              src={currentUser.profileImg.file.url}
+              className="body-container__left__avatar"
+              size={'2xl'}
+            />
           </Box>
 
           <Box className="body-container__center">
             <Heading className="body-container__center__name">
               {currentUser.name}
             </Heading>
+            <Text
+              color={'lavender.500'}
+              className="body-container__center__headline"
+            >
+              {currentUser.headline}
+            </Text>
             <Center>
               {loading && <Spinner color="purple.500" size={'xl'} />}
             </Center>
