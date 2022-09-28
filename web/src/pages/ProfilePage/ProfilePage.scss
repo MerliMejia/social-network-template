@@ -43,14 +43,21 @@ body{
   &__left{
     position: relative;
     background-color: white;
-    padding: 50px;
+    width: 225px;
+    padding: 20px;
     box-shadow: $normal-shadow;
     &__avatar{
       position: relative;
-      top: -110px;
+      top: -20px;
       border-style: solid;
       border-color: white;
       border-width: 5px;
+    }
+    &__follow-container{
+      margin-top: 80px;
+      &__data{
+        margin-top: 20px;
+      }
     }
   }
   &__center__name{

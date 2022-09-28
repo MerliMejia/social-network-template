@@ -120,11 +120,45 @@ const ProfilePage = () => {
             className="body-container__left"
             style={{ borderStyle: 'solid', borderColor: 'red' }}
           >
-            <Avatar
-              src={currentUser.profileImg.file.url}
-              className="body-container__left__avatar"
-              size={'2xl'}
-            />
+            <Center height={0}>
+              <Avatar
+                src={currentUser.profileImg.file.url}
+                className="body-container__left__avatar"
+                size={'2xl'}
+              />
+            </Center>
+            <Flex
+              className="body-container__left__follow-container"
+              alignContent={'center'}
+              justifyContent={'space-between'}
+            >
+              <Box>
+                <Heading color={'lavender.400'} as={'h3'} size={'sm'}>
+                  Following
+                </Heading>
+                <Center>
+                  <Text
+                    className="body-container__left__follow-container__data"
+                    fontWeight={'bold'}
+                  >
+                    {currentUser.following.length}
+                  </Text>
+                </Center>
+              </Box>
+              <Box>
+                <Heading color={'lavender.400'} as={'h3'} size={'sm'}>
+                  Followers
+                </Heading>
+                <Center>
+                  <Text
+                    className="body-container__left__follow-container__data"
+                    fontWeight={'bold'}
+                  >
+                    {currentUser.followers.length}
+                  </Text>
+                </Center>
+              </Box>
+            </Flex>
           </Box>
 
           <Box className="body-container__center">
