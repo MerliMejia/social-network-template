@@ -43,7 +43,7 @@ body{
   &__left{
     position: relative;
     background-color: white;
-    width: 225px;
+    width: 250px;
     padding: 20px;
     box-shadow: $normal-shadow;
     &__avatar{
@@ -79,6 +79,12 @@ body{
   .body-container{
     &__left{
       width: 100%;
+    }
+    &__center__name{
+      margin-left: 20px;
+    }
+    &__center__headline{
+      margin-left: 20px;
     }
   }
 }

@@ -53,6 +53,11 @@ export const getCurrentUser = async (session) => {
           },
         },
       },
+      website: true,
+      facebook: true,
+      twitter: true,
+      instagram: true,
+      youtube: true,
     },
   })
 }

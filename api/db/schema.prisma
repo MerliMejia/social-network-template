@@ -24,6 +24,11 @@ model User {
   headerImgId         Int?
   following           Following[]
   followers           Followers[]
+  website             String?
+  facebook            String?
+  twitter             String?
+  instagram           String?
+  youtube             String?
 }
 
 model Following {

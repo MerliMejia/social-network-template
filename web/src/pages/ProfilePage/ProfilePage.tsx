@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { TbWorld } from 'react-icons/tb'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Post } from 'types/graphql'
 
@@ -12,14 +13,19 @@ import {
   Avatar,
   Box,
   Center,
+  Divider,
   Flex,
   Heading,
   Image,
+  List,
+  ListIcon,
+  ListItem,
   Skeleton,
   Spinner,
   Stack,
   Text,
 } from '@chakra-ui/react'
+import CustomLink from 'src/components/CustomLink/CustomLink'
 import PostCard from 'src/components/PostCard/PostCard'
 import { QUERY as POST_QUERY } from 'src/components/PostsCell/PostsCell'
 
@@ -130,7 +136,7 @@ const ProfilePage = () => {
             <Flex
               className="body-container__left__follow-container"
               alignContent={'center'}
-              justifyContent={'space-between'}
+              justifyContent={'space-evenly'}
             >
               <Box>
                 <Heading color={'lavender.400'} as={'h3'} size={'sm'}>
@@ -159,6 +165,44 @@ const ProfilePage = () => {
                 </Center>
               </Box>
             </Flex>
+            <List spacing={3} marginTop={25}>
+              <ListItem>
+                <Divider borderWidth={1} marginBottom={3} />
+                <ListIcon as={TbWorld} color="purple.500" />
+                <CustomLink to={currentUser.website}>
+                  {currentUser.website.substring(0, 30)}
+                </CustomLink>
+                <Divider borderWidth={1} marginTop={3} />
+              </ListItem>
+              <ListItem>
+                <ListIcon as={TbWorld} color="purple.500" />
+                <CustomLink to={currentUser.facebook}>
+                  {currentUser.facebook.substring(0, 30)}
+                </CustomLink>
+                <Divider borderWidth={1} marginTop={3} />
+              </ListItem>
+              <ListItem>
+                <ListIcon as={TbWorld} color="purple.500" />
+                <CustomLink to={currentUser.twitter}>
+                  {currentUser.twitter.substring(0, 30)}
+                </CustomLink>
+                <Divider borderWidth={1} marginTop={3} />
+              </ListItem>
+              <ListItem>
+                <ListIcon as={TbWorld} color="purple.500" />
+                <CustomLink to={currentUser.instagram}>
+                  {currentUser.instagram.substring(0, 30)}
+                </CustomLink>
+                <Divider borderWidth={1} marginTop={3} />
+              </ListItem>
+              <ListItem>
+                <ListIcon as={TbWorld} color="purple.500" />
+                <CustomLink to={currentUser.youtube}>
+                  {currentUser.youtube.substring(0, 30)}
+                </CustomLink>
+                <Divider borderWidth={1} marginTop={3} />
+              </ListItem>
+            </List>
           </Box>
 
           <Box className="body-container__center">
