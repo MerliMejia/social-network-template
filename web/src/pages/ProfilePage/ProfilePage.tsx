@@ -20,9 +20,7 @@ import {
   List,
   ListIcon,
   ListItem,
-  Skeleton,
   Spinner,
-  Stack,
   Text,
 } from '@chakra-ui/react'
 import CustomLink from 'src/components/CustomLink/CustomLink'
@@ -91,29 +89,8 @@ const ProfilePage = () => {
       <MetaTags title="Profile" description="Profile page" />
       <Box className="header-container">
         <Image
-          fallback={
-            <Center className="header-container__fallback" padding={'20px'}>
-              <Stack width={'90%'}>
-                <Skeleton
-                  startColor={'purple.200'}
-                  endColor={'purple.400'}
-                  height="20px"
-                />
-                <Skeleton
-                  startColor={'purple.200'}
-                  endColor={'purple.400'}
-                  height="20px"
-                />
-                <Skeleton
-                  startColor={'purple.200'}
-                  endColor={'purple.400'}
-                  height="20px"
-                />
-              </Stack>
-            </Center>
-          }
           className="header-container__img"
-          src={currentUser.headerImg.file.url}
+          src={currentUser.headerImg && currentUser.headerImg.file.url}
         />
       </Box>
       <Box className="body-container">
@@ -128,7 +105,7 @@ const ProfilePage = () => {
           >
             <Center height={0}>
               <Avatar
-                src={currentUser.profileImg.file.url}
+                src={currentUser.profileImg && currentUser.profileImg.file.url}
                 className="body-container__left__avatar"
                 size={'2xl'}
               />
@@ -166,42 +143,52 @@ const ProfilePage = () => {
               </Box>
             </Flex>
             <List spacing={3} marginTop={25}>
-              <ListItem>
-                <Divider borderWidth={1} marginBottom={3} />
-                <ListIcon as={TbWorld} color="purple.500" />
-                <CustomLink to={currentUser.website}>
-                  {currentUser.website.substring(0, 30)}
-                </CustomLink>
-                <Divider borderWidth={1} marginTop={3} />
-              </ListItem>
-              <ListItem>
-                <ListIcon as={TbWorld} color="purple.500" />
-                <CustomLink to={currentUser.facebook}>
-                  {currentUser.facebook.substring(0, 30)}
-                </CustomLink>
-                <Divider borderWidth={1} marginTop={3} />
-              </ListItem>
-              <ListItem>
-                <ListIcon as={TbWorld} color="purple.500" />
-                <CustomLink to={currentUser.twitter}>
-                  {currentUser.twitter.substring(0, 30)}
-                </CustomLink>
-                <Divider borderWidth={1} marginTop={3} />
-              </ListItem>
-              <ListItem>
-                <ListIcon as={TbWorld} color="purple.500" />
-                <CustomLink to={currentUser.instagram}>
-                  {currentUser.instagram.substring(0, 30)}
-                </CustomLink>
-                <Divider borderWidth={1} marginTop={3} />
-              </ListItem>
-              <ListItem>
-                <ListIcon as={TbWorld} color="purple.500" />
-                <CustomLink to={currentUser.youtube}>
-                  {currentUser.youtube.substring(0, 30)}
-                </CustomLink>
-                <Divider borderWidth={1} marginTop={3} />
-              </ListItem>
+              {currentUser.website && (
+                <ListItem>
+                  <Divider borderWidth={1} marginBottom={3} />
+                  <ListIcon as={TbWorld} color="purple.500" />
+                  <CustomLink to={currentUser.website}>
+                    {currentUser.website.substring(0, 30)}
+                  </CustomLink>
+                  <Divider borderWidth={1} marginTop={3} />
+                </ListItem>
+              )}
+              {currentUser.facebook && (
+                <ListItem>
+                  <ListIcon as={TbWorld} color="purple.500" />
+                  <CustomLink to={currentUser.facebook}>
+                    {currentUser.facebook.substring(0, 30)}
+                  </CustomLink>
+                  <Divider borderWidth={1} marginTop={3} />
+                </ListItem>
+              )}
+              {currentUser.twitter && (
+                <ListItem>
+                  <ListIcon as={TbWorld} color="purple.500" />
+                  <CustomLink to={currentUser.twitter}>
+                    {currentUser.twitter.substring(0, 30)}
+                  </CustomLink>
+                  <Divider borderWidth={1} marginTop={3} />
+                </ListItem>
+              )}
+              {currentUser.instagram && (
+                <ListItem>
+                  <ListIcon as={TbWorld} color="purple.500" />
+                  <CustomLink to={currentUser.instagram}>
+                    {currentUser.instagram.substring(0, 30)}
+                  </CustomLink>
+                  <Divider borderWidth={1} marginTop={3} />
+                </ListItem>
+              )}
+              {currentUser.youtube && (
+                <ListItem>
+                  <ListIcon as={TbWorld} color="purple.500" />
+                  <CustomLink to={currentUser.youtube}>
+                    {currentUser.youtube.substring(0, 30)}
+                  </CustomLink>
+                  <Divider borderWidth={1} marginTop={3} />
+                </ListItem>
+              )}
             </List>
           </Box>
 
