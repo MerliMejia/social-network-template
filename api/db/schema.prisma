@@ -22,25 +22,13 @@ model User {
   profileImgId        Int?
   headerImg           HeaderImg?  @relation(fields: [headerImgId], references: [id])
   headerImgId         Int?
-  following           Following[]
-  followers           Followers[]
   website             String?
   facebook            String?
   twitter             String?
   instagram           String?
   youtube             String?
-}
-
-model Following {
-  id     Int  @id @default(autoincrement())
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
-}
-
-model Followers {
-  id     Int  @id @default(autoincrement())
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
+  followers           User[]      @relation("UserFollows")
+  following           User[]      @relation("UserFollows")
 }
 
 model ProfileImg {

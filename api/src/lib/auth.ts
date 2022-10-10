@@ -31,25 +31,15 @@ export const getCurrentUser = async (session) => {
       headline: true,
       followers: {
         include: {
-          user: {
-            select: {
-              email: true,
-              id: true,
-              name: true,
-              profileImg: { include: { file: { select: { url: true } } } },
-            },
+          followers: {
+            select: { id: true, email: true, name: true, profileImg: true },
           },
         },
       },
       following: {
         include: {
-          user: {
-            select: {
-              email: true,
-              id: true,
-              name: true,
-              profileImg: { include: { file: { select: { url: true } } } },
-            },
+          following: {
+            select: { id: true, email: true, name: true, profileImg: true },
           },
         },
       },
