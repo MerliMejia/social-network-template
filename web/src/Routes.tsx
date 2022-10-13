@@ -1,6 +1,7 @@
 import { Router, Route, Private, Set } from '@redwoodjs/router'
 
 import AuthLayout from './layouts/AuthLayout/AuthLayout'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 const Routes = () => {
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
       </Set>
 
       <Private unauthenticated="login">
+        <Route path="/profile" page={ProfilePage} name="profile" />
         <Route path="/" page={HomePage} name="home" />
       </Private>
       <Route notfound page={NotFoundPage} />

@@ -70,3 +70,4 @@ export const theme = extendTheme({
     '2xl': '1536px',
   },
 })
+export const POST_CARD_CONTENT_MAX_LENGHT = 115

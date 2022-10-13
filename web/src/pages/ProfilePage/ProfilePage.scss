@@ -1,0 +1,90 @@
+@import "../../utils/constants.scss";
+
+li {
+  list-style: none;
+}
+
+body{
+  background-color: #dbd8df85!important;
+}
+
+.header-container{
+  width: 100vw;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background-color: #b43bc4;
+
+  &__fallback{
+    height: 200px;
+  }
+
+  &__img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.body-container{
+  height: 80vh;
+  margin: 0;
+  position: relative;
+
+  .infinite-scroll-component__outerdiv{
+    max-height: 80vh;
+  }
+  &__profile{
+    position: absolute !important;
+    top: -10px;
+  }
+  &__left{
+    position: relative;
+    background-color: white;
+    width: 250px;
+    padding: 20px;
+    box-shadow: $normal-shadow;
+    &__avatar{
+      position: relative;
+      top: -20px;
+      border-style: solid;
+      border-color: white;
+      border-width: 5px;
+    }
+    &__follow-container{
+      margin-top: 80px;
+      &__data{
+        margin-top: 20px;
+      }
+    }
+  }
+  &__center__name{
+    margin-top: 40px;
+  }
+  &__center__headline{
+    margin-bottom: 20px;
+  }
+}
+
+body{
+  overflow-x: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .pagination {
+    width: 85vw;
+  }
+  .body-container{
+    &__left{
+      width: 100%;
+    }
+    &__center__name{
+      margin-left: 20px;
+    }
+    &__center__headline{
+      margin-left: 20px;
+    }
+  }
+}

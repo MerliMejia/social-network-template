@@ -1,8 +1,6 @@
 import { Box, Center, Container, Flex, Heading, Text } from '@chakra-ui/react'
 import { useMediaQuery } from '@chakra-ui/react'
 
-import './AuthLayout.scss'
-
 type AuthLayoutProps = {
   children?: React.ReactNode
 }
