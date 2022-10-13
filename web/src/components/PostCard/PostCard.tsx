@@ -28,7 +28,7 @@ const PostCard = ({ post }: PostCardProps) => {
     <Box className="PostCard" borderWidth={1}>
       <Flex>
         <Heading size={'md'} as={'h2'}>
-          {post.author.name}
+          {post.title}
         </Heading>
         <Spacer />
         <Menu>
@@ -41,7 +41,7 @@ const PostCard = ({ post }: PostCardProps) => {
         </Menu>
       </Flex>
       <Text className="PostCard__email" fontSize={'sm'} color={'lavender.300'}>
-        {post.author.email}
+        {post.author.name} - {post.author.email}
       </Text>
       <Text
         className="PostCard__content"
